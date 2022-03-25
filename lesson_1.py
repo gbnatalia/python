@@ -46,9 +46,6 @@ def lesson1_task1():
         else:
             print(f"Результат: {seconds} сек")
 
-        # можно через time, datatime:
-        # import time, time.gmtime(src_sec), time.strftime("%H час %M мин %S сек", convert_time)
-
         # запрос пользователя о желании продолжить преобразование времени
         game = input("Вы хотите далее заниматься преобразованием времени? (yes/no): ")
         while game != "yes" and game != "no":
