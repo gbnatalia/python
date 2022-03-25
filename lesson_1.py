@@ -129,7 +129,6 @@ def lesson1_task3():
             print(f"{number} процентов")
 
 
-
 if __name__ == "__main__":
     try:
         num_task = int(input('Введите номер задачи для тестирования из диапазона 1-3: '))
