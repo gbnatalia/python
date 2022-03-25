@@ -57,6 +57,12 @@ def lesson1_task1():
 
     print("\nРабота программы завершена. Всего доброго!")
 
+def get_sum(number):
+    summa = 0
+    list_nums = [int(el) for el in str(number)]
+    for num in list_nums:
+        summa += num
+    return summa
 
 def lesson1_task2():
     '''
@@ -76,16 +82,25 @@ def lesson1_task2():
         else:
             print(f"{lst[i]:>10}", end=", ")
 
-    sum = 0
-    sum17 = 0
-    for i in range(len(lst)):
-        if lst[i] % 7 == 0:
-            sum += lst[i]
-        lst[i] += 17
-        if lst[i] % 7 == 0:
-            sum17 += lst[i]
+    summa = 0
+    summa_17 = 0
 
-    print(f"Сумма чисел делящихся нацело на 7 в исходном списке: {sum}")
+    for i in range(len(lst)):
+
+        # Запрет использования неарифметических операций?
+        #if sum([int(el) for el in str(lst[i])]) % 7:
+        if get_sum(lst[i]) % 7 == 0:
+            summa += lst[i]
+
+        # Формирование элемента преобразованного списка
+        lst[i] += 17
+
+         # Запрет использования неарифметических операций?
+        #if sum([int(el) for el in str(lst[i])]) % 7:
+        if get_sum(lst[i]) % 7 == 0:
+            summa_17 += lst[i]
+
+    print(f"Сумма чисел сумма цифр которых делится на 7 без остатка в исходном списке: {summa}")
     print("")
     print(f"Преобразованный список:")
     for i in range(len(lst)):
@@ -93,9 +108,7 @@ def lesson1_task2():
             print(f"{lst[i]:>10}")
         else:
             print(f"{lst[i]:>10}", end=", ")
-
-    print(f"Сумма чисел делящихся нацело на 7 в преобразованном списке: {sum17}")
-
+    print(f"Сумма чисел сумма цифр которых делится на 7 без остатка в преобразованном списке: {summa_17}")
 
 def lesson1_task3():
     '''
@@ -121,7 +134,6 @@ def lesson1_task3():
 
 
 if __name__ == "__main__":
-
     try:
         num_task = int(input('Введите номер задачи для тестирования из диапазона 1-3: '))
     except ValueError:
