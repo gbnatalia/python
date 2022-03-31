@@ -66,6 +66,28 @@ def print_dictionary(name_dict):
         print('\n\t}', end="")
     print('\n}')
 
+def sort_dictionary(dictionary):
+    '''
+    Функция сортировки слова по буквам Фамилий и Имен
+    :param dictionary: словарь для сортировки
+    :return: отсортированный словарь по буквам Фамилий и имени
+    '''
+    # == сортировка по буквам фамилии ==
+    # получили список кортежей, отсортированных по ключу
+    sort_tuple = sorted(dictionary.items(), key = lambda x: x[0])
+    # преобразуем обратно в словарь
+    dictionary = dict(sort_tuple)
+
+    # == сортировка по буквам имени ==
+    for key in dictionary.keys():
+        dictionary2 = dictionary[key]
+        sort_tuple2 = sorted(dictionary2.items(), key = lambda x: x[0])
+        # преобразуем обратно в словарь
+        dictionary[key] = dict(sort_tuple2)
+
+    return dictionary
+
+
 if __name__ == "__main__":
 
     print('##############################################################')
@@ -78,6 +100,8 @@ if __name__ == "__main__":
     lst_names = str_names.split(",")              # формируем список
     lst_names = list(map(str.strip, lst_names))   # убираем лишние пробелы, если пользователь ввел Имена через запятую с пробелом
     name_dict = thesaurus_adv(*lst_names)         # формируем словарь
+    name_dict = sort_dictionary(name_dict)        # сортируем словарь
     print_dictionary(name_dict)                   # печатаем словарь
+    input("Нажмите любую клавишу для завершения работы!")
 
 
